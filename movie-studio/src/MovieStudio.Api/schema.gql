@@ -1,0 +1,11 @@
+extend type Query {
+    # get movie by ID
+    movie(id: String!): Movie
+}
+
+type Movie @key(fields: "id")  {
+    id: ID!
+    title: String!
+    year: Int!
+    genres: [String!]!
+}
