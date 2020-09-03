@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
 using GraphQL;
 using MediatR;
+using MovieStudio.Api.RequestHandlers;
 
-namespace MovieStudio.Api
+namespace MovieStudio.Api.Resolvers
 {
     [GraphQLMetadata("Query")]
     internal class TopLevelResolver
@@ -15,6 +16,6 @@ namespace MovieStudio.Api
         }
 
         [GraphQLMetadata("movie")]
-        public Task<object> GetMovieById(string id) => mediator.Send(new GetMovieById.Request(id));
+        public async Task<object> GetMovieById(string id) => await mediator.Send(new GetMovieById.Request(id));
     }
 }
