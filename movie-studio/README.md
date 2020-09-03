@@ -12,14 +12,19 @@ A GraphQL API for movie production info. Supports Apollo Federation.
 ## Getting started
 
 - Clone the repo:
+
 ```sh
 git clone https://github.com/anton-iades/graphql-samples.git
 ```
+
 - Navigate to the start-up project:
+
 ```sh
 cd movie-studio/src/MovieStudio.Api
 ```
+
 - Run the program:
+
 ```sh
 dotnet run # listens on http://localhost:5000
 ```
@@ -32,14 +37,23 @@ Visualise the API as an interactive graph.
 
 Self-hosted GraphQL IDE to explore the schema, write and execute queries, and more.
 
-```
+```gql
 # sample query
 {
-  movie(id:"111")
-  {
+  movie(id: "111") {
     title
-    year
     genres
+    released
+    cast {
+      name
+      birthDate
+    }
+    writtenBy {
+      name
+    }
+    directedBy {
+      name
+    }
   }
 }
 ```

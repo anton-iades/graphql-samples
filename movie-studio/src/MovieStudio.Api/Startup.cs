@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MovieStudio.Api.Resolvers;
 
 namespace MovieStudio.Api
 {
@@ -32,6 +33,7 @@ namespace MovieStudio.Api
             // Add GraphQL services and configure options
             services
                 .AddSingleton<TopLevelResolver>()
+                .AddSingleton<MovieResolver>()
                 .AddSingleton<AnyScalarGraphType>()
                 .AddSingleton<ServiceGraphType>()
                 .AddSingleton(provider =>
@@ -40,6 +42,7 @@ namespace MovieStudio.Api
                     {
                         schemaBuilder.ServiceProvider = provider;
                         schemaBuilder.Types.Include<TopLevelResolver>();
+                        schemaBuilder.Types.Include<MovieResolver>();
                         // TODO: reference resolver
                     });
                 })

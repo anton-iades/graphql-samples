@@ -1,11 +1,20 @@
 extend type Query {
-    # get movie by ID
-    movie(id: String!): Movie
+  # Get movie details by ID
+  movie(id: String!): Movie
 }
 
-type Movie @key(fields: "id")  {
-    id: ID!
-    title: String!
-    year: Int!
-    genres: [String!]!
+type Movie @key(fields: "id") {
+  id: ID!
+  title: String!
+  released: Date!
+  genres: [String!]!
+  directedBy: [Person!]
+  writtenBy: [Person!]
+  cast: [Person!]!
+}
+
+type Person @key(fields: "id") {
+  id: ID!
+  name: String!
+  birthDate: Date!
 }
