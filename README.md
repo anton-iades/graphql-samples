@@ -2,7 +2,8 @@
 
 For illustrating GraphQL concepts
 
-## APIs
+## Apps
 
 - Movie Studio API - [README](movie-studio)
 - Movie Theatre API - [README](movie-theatre)
+- API Gateway - [README](gateway)
