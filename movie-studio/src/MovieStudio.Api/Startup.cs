@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MovieStudio.Api.RequestHandlers;
 using MovieStudio.Api.Resolvers;
 
 namespace MovieStudio.Api
@@ -43,7 +44,13 @@ namespace MovieStudio.Api
                         schemaBuilder.ServiceProvider = provider;
                         schemaBuilder.Types.Include<TopLevelResolver>();
                         schemaBuilder.Types.Include<MovieResolver>();
-                        // TODO: reference resolver
+                        // reference resolvers
+                        schemaBuilder.Types.For("Movie").ResolveReferenceAsync(ctx =>
+                        {
+                            var mediator = ctx.ParentFieldContext.RequestServices.GetRequiredService<IMediator>();
+                            var movieId = (string)ctx.Arguments["id"];
+                            return mediator.Send(new GetMovieById.Request(movieId));
+                        });
                     });
                 })
                 .AddGraphQL((options, provider) =>
