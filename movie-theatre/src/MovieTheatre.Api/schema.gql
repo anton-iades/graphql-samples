@@ -1,0 +1,14 @@
+extend type Query {
+  # Get movie details by ID
+  nextSession: Session
+}
+
+type Session {
+  time: DateTime!
+  theatre: String!
+  movie: Movie!
+}
+
+extend type Movie @key(fields: "id") {
+  id: ID! @external
+}
