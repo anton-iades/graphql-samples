@@ -47,7 +47,7 @@ namespace MovieStudio.Api
                         // reference resolvers
                         schemaBuilder.Types.For("Movie").ResolveReferenceAsync(ctx =>
                         {
-                            var mediator = ctx.ParentFieldContext.RequestServices.GetRequiredService<IMediator>();
+                            var mediator = provider.GetRequiredService<IMediator>();
                             var movieId = (string)ctx.Arguments["id"];
                             return mediator.Send(new GetMovieById.Request(movieId));
                         });
