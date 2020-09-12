@@ -1,0 +1,14 @@
+version: "2"
+services:
+  movie-studio:
+    build: movie-studio
+    ports:
+      - "4100:80"
+  movie-theatre:
+    build: movie-theatre
+    ports:
+      - "4200:80"
+  gateway:
+    build: gateway
+    ports:
+      - "4000:4000"

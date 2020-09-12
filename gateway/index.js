@@ -3,8 +3,8 @@ const { ApolloGateway } = require("@apollo/gateway");
 
 const gateway = new ApolloGateway({
   serviceList: [
-    { name: "movie-studio", url: "http://localhost:4100/gql" },
-    { name: "movie-theatre", url: "http://localhost:4200/gql" },
+    { name: "movie-studio", url: "http://movie-studio/gql" },
+    { name: "movie-theatre", url: "http://movie-theatre/gql" },
   ],
 });
 
