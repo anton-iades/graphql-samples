@@ -1,0 +1,18 @@
+extend type Query {
+  review(id: String!): Review
+  reviewsForMovie(movieId: String!): [Review!]
+}
+
+type Review @key(fields: "id") {
+  id: ID!
+  stars: Float!
+  message: String!
+  movie: Movie
+  containsSpoilers: Boolean!
+  created: DateTime!
+}
+
+extend type Movie @key(fields: "id") {
+  id: ID! @external
+  reviews: [Review!]
+}
