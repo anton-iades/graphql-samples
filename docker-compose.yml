@@ -8,6 +8,10 @@ services:
     build: movie-theatre
     ports:
       - "4200:80"
+  movie-reviews:
+    build: movie-reviews
+    ports:
+      - "4300:80"
   gateway:
     build: gateway
     ports:

@@ -7,6 +7,7 @@ const gateway = new ApolloGateway({
   serviceList: [
     { name: "movie-studio", url: "http://movie-studio/gql" },
     { name: "movie-theatre", url: "http://movie-theatre/gql" },
+    { name: "movie-reviews", url: "http://movie-reviews/gql" },
   ],
 });
 
